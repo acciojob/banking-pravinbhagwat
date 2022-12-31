@@ -34,6 +34,9 @@ public class BankAccount {
 
     public void withdraw(double amount) throws Exception {
         // Remember to throw "Insufficient Balance" exception, if the remaining amount would be less than minimum balance
+        if(amount <= 0) {
+            throw new Exception("Invalid amount");
+        }
         if ((this.balance-amount) < minBalance) {
             throw new Exception("Insufficient Balance");
         }
@@ -42,6 +45,9 @@ public class BankAccount {
         }
     }
 
+    public void checkAmount(double amount, double minBalance) throws Exception {
+        if(amount < minBalance) throw new Exception("Amount must be greater than or equal to "+minBalance);
+    }
     public String getName() {
         return name;
     }
