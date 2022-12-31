@@ -10,7 +10,15 @@ public class Main {
 //        System.out.println(ci);
 //        double si = sb.getSimpleInterest(2);
 //        System.out.println(si);
-        sb.withdraw(5000);
-        System.out.println(sb.getBalance());
+//        sb.withdraw(5000);
+//        System.out.println(sb.generateAccountNumber(2, 18));
+//        System.out.println(sb.getBalance());
+        CurrentAccount cb = new CurrentAccount("ABC", 6000, "ABB");
+        //cb.withdraw(5000);
+        cb.validateLicenseId();
+        System.out.println(cb.getTradeLicenseId());
+        System.out.println(cb.generateAccountNumber(2, 18));
+        System.out.println(cb.getBalance());
+
     }
 }

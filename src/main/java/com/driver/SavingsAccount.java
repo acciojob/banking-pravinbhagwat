@@ -1,10 +1,10 @@
 package com.driver;
 
 public class SavingsAccount extends BankAccount{
-    double rate;
-    double maxWithdrawalLimit;
+    private double rate;
+    private double maxWithdrawalLimit;
 
-    public SavingsAccount(String name, double balance, double maxWithdrawalLimit, double rate) throws Exception{
+    public SavingsAccount(String name, double balance, double maxWithdrawalLimit, double rate){
         // minimum balance is 0 by default
         super(name, balance, 0);
         this.maxWithdrawalLimit = maxWithdrawalLimit;

@@ -8,8 +8,7 @@ public class BankAccount {
     private double balance;
     private double minBalance;
 
-    public BankAccount(String name, double balance, double minBalance) throws Exception{
-        if(balance < minBalance) throw new Exception("Insufficient Balance");
+    public BankAccount(String name, double balance, double minBalance) {
         this.name = name;
         this.balance = balance;
         this.minBalance = minBalance;
@@ -26,18 +25,22 @@ public class BankAccount {
         return accountNoGenerator(digits,sum);
     }
 
-    public String accountNoGenerator(int digits, int sum) {
+    private String accountNoGenerator(int digits, int sum) {
         int[] acconutNo=new int[digits];
+        String acconutNoStr = "";
         for(int i=0; i<digits; i++){
             if(sum>=9){
                 acconutNo[i]=9;
+                acconutNoStr+=9;
                 sum=sum-9;
             }else{
                 acconutNo[i]=sum;
+                acconutNoStr+=sum;
                 sum=0;
             }
         }
-        return Arrays.toString(acconutNo);
+//        return Arrays.toString(acconutNo);
+        return acconutNoStr;
     }
 
     public void deposit(double amount) {
