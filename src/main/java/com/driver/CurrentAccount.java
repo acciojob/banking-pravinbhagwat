@@ -10,9 +10,8 @@ public class CurrentAccount extends BankAccount{
     public CurrentAccount(String name, double balance, String tradeLicenseId) throws Exception {
         // minimum balance is 5000 by default. If balance is less than 5000, throw "Insufficient Balance" exception
         super(name, balance, 5000);
-        if(balance < 5000) throw new Exception("Insufficient Balance");
         this.tradeLicenseId = tradeLicenseId;
-        //validateLicenseId();
+        validateLicenseId();
     }
 
     public String getTradeLicenseId() {
@@ -31,7 +30,7 @@ public class CurrentAccount extends BankAccount{
         }
     }
 
-    public String rearrangeString(String id) {
+    private String rearrangeString(String id) {
         int len = id.length();
         Map<Character, Integer> map = new HashMap<>();
         for(char ch : id.toCharArray()) {
@@ -66,7 +65,7 @@ public class CurrentAccount extends BankAccount{
         return sb.toString();
     }
 
-    public boolean isConsecutiveChar(String id) {
+    private boolean isConsecutiveChar(String id) {
         int n = id.length();
         for (int i = 0; i < n-1; i++) {
             if (id.charAt(i) == id.charAt(i+1)) return false;
