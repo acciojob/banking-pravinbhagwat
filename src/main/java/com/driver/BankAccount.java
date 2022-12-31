@@ -1,6 +1,6 @@
 package com.driver;
 
-import java.util.Random;
+import java.util.Arrays;
 
 public class BankAccount {
 
@@ -8,7 +8,8 @@ public class BankAccount {
     private double balance;
     private double minBalance;
 
-    public BankAccount(String name, double balance, double minBalance) {
+    public BankAccount(String name, double balance, double minBalance) throws Exception{
+        if(balance < minBalance) throw new Exception("Insufficient Balance");
         this.name = name;
         this.balance = balance;
         this.minBalance = minBalance;
@@ -19,10 +20,24 @@ public class BankAccount {
         //Generate account number having given number of 'digits' such that the sum of digits is equal to 'sum'
         //If it is not possible, throw "Account Number can not be generated" exception
 
-        Random random = new Random();
-        int num = random.nextInt();
+        if(sum>9*digits){
+            throw new Exception("Account Number can not be generated");
+        }
+        return accountNoGenerator(digits,sum);
+    }
 
-        return null;
+    public String accountNoGenerator(int digits, int sum) {
+        int[] acconutNo=new int[digits];
+        for(int i=0; i<digits; i++){
+            if(sum>=9){
+                acconutNo[i]=9;
+                sum=sum-9;
+            }else{
+                acconutNo[i]=sum;
+                sum=0;
+            }
+        }
+        return Arrays.toString(acconutNo);
     }
 
     public void deposit(double amount) {
